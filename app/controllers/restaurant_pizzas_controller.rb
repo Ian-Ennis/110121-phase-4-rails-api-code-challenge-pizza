@@ -4,13 +4,12 @@ class RestaurantPizzasController < ApplicationController
     def create 
         restaurant_pizza = RestaurantPizza.create!(restaurant_pizza_params)
         render json: restaurant_pizza, status: :created
-        return restaurant_pizza
     end
 
     private
 
     def restaurant_pizza_params
-        params.permit(:id, :name, :ingredients, :price, :pizza_id, :restaurant_id)
+        params.permit(:price, :pizza_id, :restaurant_id)
     end
 
     def render_invalid_record(exception)
